@@ -4,6 +4,10 @@ header {
   height: 20vh;
 }
 
+h1 {
+  text-align: center;
+}
+
 header > h1 {
   text-align: right;
   position: relative;
@@ -14,16 +18,16 @@ body > h1 {
   text-align: center;
 }
 
-body > h3 {
+main > h3 {
   text-align: center;
   position: relative;
-  top: 50px;
+  top: 10px;
 }
 
-body > p {
+main > p {
   text-align: center;
   position: relative;
-  top: 50px;
+  top: 10px;
 }
 
 nav > ul {
