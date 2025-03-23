@@ -1,3 +1,7 @@
+html {
+  background-color: rgb(219, 139, 34);
+}
+
 header {
   background-image: url(https://plus.unsplash.com/premium_photo-1683129637833-a3680041faf0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTIxfHxhcmNoaXRlY3R1cmUlMjBkcmF3aW5nfGVufDB8fDB8fHww);
   background-size: cover;
@@ -38,6 +42,8 @@ nav > ul {
 footer {
   position: fixed;
   bottom: 10px;
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
 }
 
 h2 {
@@ -61,5 +67,37 @@ nav > ul > li {
   list-style-type: none;
 }
 
-@media (max-width: 768px){
+#Flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Select-Architect {
+  padding: 10%;
+  border: 5px black solid;
+  text-align: center;
+  border-radius: 5px;
+  margin: 100px;
+  background-color: rgb(222, 93, 39);
+  font-size: medium;
+}
+
+  @media (min-width: 550px) {
+    nav > .fa-bars {
+      display: none;
+      visibility: hidden;
+    }
   }
+
+@media (max-width: 550px) {
+  .hidden--mobile {
+    display: none;
+  }
+
+  #Flex-container{
+    flex-direction: column;
+  }
+}
+
+
+
