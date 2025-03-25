@@ -1,35 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-<body>
+import html from "html-literal";
 
-<header>
-  <h1>Contact Us</h1>
-</header>
-
-<nav>
-  <i class="fas fa-bars"></i>
-  <ul class="hidden--mobile nav-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="index.html">Home</a></li>
-  </ul>
-</nav>
-
-<main>
-  <h3><u>How can you contact us?</u></h3>
-  <p>We can be reached via email at thearchitectandyou@gmail.com.</p>
-</main>
-
-<footer id="footer">
-  <p>Your Dream Home</p>
-  <a href="about.html">About</a>
-  <a href="home.html">Home</a>
-</footer>
-
-</body>
-<script src="index.js" type="module"> </script>
- </html>
+export default () => html`
+  <main>
+    <h3>
+      <u>How can you contact us?</u>
+    </h3>
+    <p>We can be reached via email at thearchitectandyou@gmail.com.</p>
+  </main>
+`;
