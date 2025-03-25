@@ -1,4 +1,4 @@
-import navItems from "./navItems.js";
+import navItem from "./navItems.js";
 import html from "html-literal";
 
 export default (navItems) => {
@@ -8,7 +8,7 @@ export default (navItems) => {
       <ul class="hidden--mobile nav-links">
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        ${navItems.map((item) => navItem(item)).join("")}
+        ${navItems.map((item => navItem(item)).join("")}
       </ul>
     </nav>
   `;
