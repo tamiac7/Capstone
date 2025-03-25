@@ -3,10 +3,6 @@ import * as store from "./store";
 import Navigo from "navigo";
 import { camelCase } from "lodash";
 
-document.querySelector(".fa-bars").addEventListener("click", () => {
-  document.querySelector("nav > ul").classList.toggle("hidden--mobile");
-});
-
 const router = new Navigo("/");
 
 function render(state = store.home) {
@@ -18,7 +14,6 @@ function render(state = store.home) {
   `;
   router.updatePageLinks();
 }
-render();
 
 router
   .on({
