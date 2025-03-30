@@ -1,20 +1,19 @@
 import html from "html-literal";
 
 export default () => html`
-  <header>
-    <h1 class="inknut-antiqua-black">The Architect & You</h1>
-  </header>
   <main>
-    <h1><u class="press-start-2p-regular">Choose your Architect</u></h1>
+    <h1>
+      <u class="alumni-sans-collegiate-one-regular">Choose your Architect</u>
+    </h1>
     <div id="Flex-container">
       <div class="Select-Architect">
-        <p>Architect #1</p>
+        <p><b>Architect #1</b></p>
       </div>
       <div class="Select-Architect">
-        <p>Architect #2</p>
+        <p><b>Architect #2</b></p>
       </div>
       <div class="Select-Architect">
-        <p>Architect #3</p>
+        <p><b>Architect #3</b></p>
       </div>
     </div>
   </main>
