@@ -35,6 +35,7 @@ router.hooks({
             // We need to store the response to the state, in the next step but in the meantime let's see what it looks like so that we know what to store from the response.
             console.log("response.data", response.data);
             console.log("single", response.data[0]);
+            // Create a variable to return a single item within the array of objects.
             let product = response.data[0];
             console.log("firstID", response.data.id);
             // Create an object to be stored in the Home state from the response
@@ -46,20 +47,6 @@ router.hooks({
               category: product.category,
               image: product.image,
             };
-            done();
-          })
-          .catch((error) => {
-            console.log("It puked", error);
-            done();
-          });
-        break;
-      case "estimate":
-        // New Axios get request utilizing already made environment variable
-        axios
-          .get(`'https://fakestoreapi.com/carts`)
-          .then((response) => {
-            // We need to store the response to the state, in the next step but in the meantime let's see what it looks like so that we know what to store from the response.
-            console.log("response", response);
             done();
           })
           .catch((error) => {
