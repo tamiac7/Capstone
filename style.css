@@ -97,7 +97,7 @@ h2 {
   font-size: medium;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 549px) {
   .hidden--mobile {
     display: none;
   }
