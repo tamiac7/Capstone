@@ -5,6 +5,8 @@ export default () => html`
     <h3>
       <u>How can you contact us?</u>
     </h3>
-    <p>We can be reached via email at thearchitectandyou@gmail.com.</p>
+    <div class="Info">
+      <p>We can be reached via email at thearchitectandyou@gmail.com.</p>
+    </div>
   </main>
 `;
