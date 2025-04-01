@@ -21,9 +21,7 @@ router.hooks({
   // https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md#match
   before: (done, match) => {
     // We need to know what view we are on to know what data to fetch
-    const view = match?.data?.view
-      ? camelCase(match.data.view)
-      : "buildYourHome";
+    const view = match?.data?.view ? camelCase(match.data.view) : "home";
     // Add a switch case statement to handle multiple routes
     switch (view) {
       // Add a case for each view that needs data from an API
@@ -37,7 +35,6 @@ router.hooks({
             console.log("single", response.data[0]);
             // Create a variable to return a single item within the array of objects.
             let product = response.data[0];
-            console.log("firstID", response.data.id);
             // Create an object to be stored in the Home state from the response
             store.buildYourHome.product = {
               id: product.id,
