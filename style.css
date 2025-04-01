@@ -16,7 +16,8 @@ h1 {
 header > h1 {
   text-align: right;
   position: relative;
-  top: 135px;
+  top: 100px;
+  margin-bottom: 0;
 }
 
 body > h1 {
