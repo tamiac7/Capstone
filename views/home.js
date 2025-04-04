@@ -6,14 +6,29 @@ export default () => html`
       <u class="alumni-sans-collegiate-one-regular">Choose your Architect</u>
     </h1>
     <div id="Flex-container">
-      <div class="Select-Architect">
-        <p><b>Architect #1</b></p>
+      <div>
+        <button type="button" class="collapsible">
+          <p><b>Architect #1</b></p>
+        </button>
+        <div class="content">
+          <p>Hello, my name is Jamie and I am an award winning Architect.</p>
+        </div>
       </div>
-      <div class="Select-Architect">
-        <p><b>Architect #2</b></p>
+      <div>
+        <button type="button" class="collapsible">
+          <p><b>Architect #2</b></p>
+        </button>
+        <div class="content">
+          <p>Hello, my name is Jamie and I am an award winning Architect.</p>
+        </div>
       </div>
-      <div class="Select-Architect">
-        <p><b>Architect #3</b></p>
+      <div>
+        <button type="button" class="collapsible">
+          <p><b>Architect #3</b></p>
+        </button>
+        <div class="content">
+          <p>Hello, my name is Jamie and I am an award winning Architect.</p>
+        </div>
       </div>
     </div>
   </main>
