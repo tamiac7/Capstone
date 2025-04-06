@@ -1,5 +1,6 @@
 // 'Import' the Express module instead of http
 import express from "express";
+import dotenv from "dotenv";
 
 // Load environment variables from .env file
 dotenv.config();
