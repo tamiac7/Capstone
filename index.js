@@ -25,32 +25,7 @@ router.hooks({
     // Add a switch case statement to handle multiple routes
     switch (view) {
       // Add a case for each view that needs data from an API
-      case "buildYourHome":
-        // New Axios get request utilizing already made environment variable
-        axios
-          .get(`https://fakestoreapi.com/products`)
-          .then((response) => {
-            // We need to store the response to the state, in the next step but in the meantime let's see what it looks like so that we know what to store from the response.
-            console.log("response.data", response.data);
-            console.log("single", response.data[0]);
-            // Create a variable to return a single item within the array of objects.
-            let product = response.data[0];
-            // Create an object to be stored in the Home state from the response
-            store.buildYourHome.product = {
-              id: product.id,
-              title: product.title,
-              price: product.price,
-              description: product.description,
-              category: product.category,
-              image: product.image,
-            };
-            done();
-          })
-          .catch((error) => {
-            console.log("It puked", error);
-            done();
-          });
-        break;
+
       default:
         // We must call done for all views so we include default for the views that don't have cases above.
         done();
@@ -58,13 +33,30 @@ router.hooks({
     }
   },
   already: (match) => {
-    const view = match?.data?.view
-      ? camelCase(match.data.view)
-      : "buildYourHome";
+    const view = match?.data?.view ? camelCase(match.data.view) : "contact";
 
     render(store[view]);
   },
   after: (match) => {
+    const view = match?.data?.view ? camelCase(match.data.view) : "contact";
+
+    if (view === "contact") {
+      document.querySelector("#emailForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const toEmail = document.getElementById("to").value;
+        console.log(toEmail);
+        try {
+          const response = await axios.post("Send Grid URL", {
+            toEmail
+          })
+          alert(response.data.message)
+        } catch (error) {
+          console.error(error.message)
+          alert("Failed to send");
+        }
+      });
+
     var coll = document.getElementsByClassName("collapsible");
     var i;
 

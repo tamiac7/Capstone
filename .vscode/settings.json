@@ -19,8 +19,7 @@
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.view.alwaysShowHeaderActions": true,
-  "editor.rulers": [
-      100, 120
-  ],
-  "liveServer.settings.port": 5501
+  "editor.rulers": [100, 120],
+  "liveServer.settings.port": 5501,
+  "cSpell.words": ["SENDGRID"]
 }
