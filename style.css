@@ -5,7 +5,7 @@ html {
 header {
   background-image: url(https://plus.unsplash.com/premium_photo-1683129637833-a3680041faf0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTIxfHxhcmNoaXRlY3R1cmUlMjBkcmF3aW5nfGVufDB8fDB8fHww);
   background-size: cover;
-  height: 20vh;
+  height: 25vh;
   opacity: 75%;
 }
 
@@ -57,6 +57,24 @@ main > p {
   justify-content: space-between;
 }
 
+form {
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 1rem;
+  background-color: rgb(222, 93, 39);
+}
+
+form > * {
+  margin: 0.5rem;
+}
+
+form > input[type="submit"] {
+  width: 40%;
+  margin: 0.5rem;
+  margin-right: auto;
+}
+
 h2 {
   text-align: center;
 }
@@ -82,11 +100,46 @@ h2 {
   font-size: medium;
 }
 
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 40;
+}
+
 img {
   position: relative;
   left: 35%;
   max-width: 25%;
   height: auto;
+}
+
+.home {
+  position: relative;
+  left: 25%;
+  max-width: 50%;
+}
+
+.Architects {
+  position: relative;
+  top: 15px;
+  left: 100px;
+  max-width: 80%;
+}
+
+#homeModel {
+  position: relative;
+  left: 25%;
+  max-width: 50%;
+}
+
+#estimate {
+  position: relative;
+  left: 175px;
+  max-width: 90%;
+  margin: 10px;
+}
+
+#submit {
+  display: flex;
+  justify-content: center;
 }
 
 /* Style the button that is used to open and close the collapsible content */
@@ -133,4 +186,7 @@ img {
   nav > .fa-bars {
     display: none;
   }
+}
+
+@media (min-width: 550px) and (max-width: 1024px) {
 }
