@@ -25,8 +25,34 @@ router.hooks({
     // Add a switch case statement to handle multiple routes
     switch (view) {
       // Add a case for each view that needs data from an API
+      case "contact":
+      // Post request to retrieve the
+      axios
+      .post((request) => {
+        console.log("request.data", request.data);
 
-      default:
+        const sgMail = require('@sendgrid/mail')
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
+        const msg = {
+          to: 'test@example.com', // Change to your recipient
+          from: 'test@example.com', // Change to your verified sender
+          subject: 'Sending with SendGrid is Fun',
+          text: 'and easy to do anywhere, even with Node.js',
+          html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+        }
+
+        sgMail
+          .send(msg)
+          .then((response) => {
+            console.log(response[0].statusCode)
+            console.log(response[0].headers)
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+      })
         // We must call done for all views so we include default for the views that don't have cases above.
         done();
       // break is not needed since it is the last condition, if you move default higher in the stack then you should add the break statement.
@@ -76,8 +102,6 @@ router.hooks({
     // add menu toggle to bars icon in nav bar
     document.querySelector(".fa-bars").addEventListener("click", () => {
       document.querySelector("nav > ul").classList.toggle("hidden--mobile");
-    });
-  },
 });
 
 router
