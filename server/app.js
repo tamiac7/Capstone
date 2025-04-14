@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import estimates from "./controllers/estimates.js";
+import sendMail from "./controllers/sendMail.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -59,6 +60,7 @@ app.get("/status", (request, response) => {
 });
 
 app.use("/estimates", estimates);
+app.use("/sendMail", sendMail);
 
 // Tell the Express app to start listening
 // Let the humans know I am running and listening on 4040
