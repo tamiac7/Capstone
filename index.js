@@ -23,55 +23,41 @@ router.hooks({
     // We need to know what view we are on to know what data to fetch
     const view = match?.data?.view ? camelCase(match.data.view) : "home";
     // Add a switch case statement to handle multiple routes
-    switch (view) {
-      // Add a case for each view that needs data from an API
-      case "contact":
-      // Post request to retrieve the
-      axios
-      .post((request) => {
-        console.log("request.data", request.data);
-
-        const sgMail = require('@sendgrid/mail')
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-
-        const msg = {
-          to: 'test@example.com', // Change to your recipient
-          from: 'test@example.com', // Change to your verified sender
-          subject: 'Sending with SendGrid is Fun',
-          text: 'and easy to do anywhere, even with Node.js',
-          html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-        }
-
-      })
-        // We must call done for all views so we include default for the views that don't have cases above.
-        done();
-      // break is not needed since it is the last condition, if you move default higher in the stack then you should add the break statement.
-    }
+    // // switch (view) {
+    // }
+    done();
   },
+
   already: (match) => {
-    const view = match?.data?.view ? camelCase(match.data.view) : "contact";
+    const view = match?.data?.view ? camelCase(match.data.view) : "home";
 
     render(store[view]);
   },
   after: (match) => {
-    const view = match?.data?.view ? camelCase(match.data.view) : "contact";
+    const view = match?.data?.view ? camelCase(match.data.view) : "home";
 
     if (view === "contact") {
-      document.querySelector("#emailForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
+      document
+        .querySelector("#emailForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
 
-        const toEmail = document.getElementById("to").value;
-        console.log(toEmail);
-        try {
-          const response = await axios.post("Send Grid URL", {
-            toEmail
-          })
-          alert(response.data.message)
-        } catch (error) {
-          console.error(error.message)
-          alert("Failed to send");
-        }
-      });
+          const toEmail = document.getElementById("to").value;
+          console.log(toEmail);
+          try {
+            const response = await axios.post(
+              "http://localhost:4040/sendMail",
+              {
+                toEmail,
+              }
+            );
+            alert(response.data.message);
+          } catch (error) {
+            console.error(error.message);
+            alert("Failed to send");
+          }
+        });
+    }
 
     var coll = document.getElementsByClassName("collapsible");
     var i;
@@ -92,6 +78,8 @@ router.hooks({
     // add menu toggle to bars icon in nav bar
     document.querySelector(".fa-bars").addEventListener("click", () => {
       document.querySelector("nav > ul").classList.toggle("hidden--mobile");
+    });
+  },
 });
 
 router
