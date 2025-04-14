@@ -42,16 +42,6 @@ router.hooks({
           html: '<strong>and easy to do anywhere, even with Node.js</strong>',
         }
 
-        sgMail
-          .send(msg)
-          .then((response) => {
-            console.log(response[0].statusCode)
-            console.log(response[0].headers)
-  })
-  .catch((error) => {
-    console.error(error)
-  })
-
       })
         // We must call done for all views so we include default for the views that don't have cases above.
         done();
