@@ -42,16 +42,19 @@ router.hooks({
         .addEventListener("submit", async (e) => {
           e.preventDefault();
 
-          const toEmail = document.getElementById("to").value;
-          console.log(toEmail);
+          const inputList = e.target.elements;
+          const requestData = {
+            email: inputList.to.value,
+            message: inputList.message.value,
+          };
+          // const toEmail = document.getElementById("to").value;
+          // console.log(toEmail);
           try {
-            const response = await axios.post(
-              "http://localhost:4040/sendMail",
-              {
-                toEmail,
-              }
-            );
-            alert(response.data.message);
+            await axios
+              .post(`${process.env.TAAY_URL}/sendMail`, requestData)
+              .then((response) => {
+                alert(response.data.message);
+              });
           } catch (error) {
             console.error(error.message);
             alert("Failed to send");

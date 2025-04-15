@@ -75,8 +75,10 @@ form > input[type="submit"] {
   margin-right: auto;
 }
 
-h2 {
-  text-align: center;
+#emailForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .inknut-antiqua-black {
@@ -111,10 +113,9 @@ img {
   height: auto;
 }
 
-.home {
-  position: relative;
-  left: 25%;
-  max-width: 50%;
+.Materials {
+  display: flex;
+  align-items: center;
 }
 
 .Architects {
@@ -122,6 +123,12 @@ img {
   top: 15px;
   left: 100px;
   max-width: 80%;
+}
+
+.home {
+  position: relative;
+  left: 25%;
+  max-width: 50%;
 }
 
 #homeModel {
