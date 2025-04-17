@@ -22,14 +22,10 @@ router.post("/", async (request, response) => {
   }
 });
 
-// Get all estimates route
-router.get("/", async (request, response) => {
+// Get a single pizza by ID
+router.get("/:id", async (request, response) => {
   try {
-    // Store the query params into a JavaScript Object
-    const query = request.query; // Defaults to an empty object {}
-    console.log("query", request.query);
-
-    const data = await Estimate.find(query);
+    const data = await Estimate.findById(request.params.id);
 
     response.json(data);
   } catch (error) {

@@ -23,7 +23,10 @@ router.hooks({
     // We need to know what view we are on to know what data to fetch
     const view = match?.data?.view ? camelCase(match.data.view) : "home";
     // Add a switch case statement to handle multiple routes
-    // // switch (view) {
+    // switch (view) {
+    //   case "estimate":
+    //   // axios.get(`${process.env.TAAY_API}/estimates/id:`);
+
     // }
     done();
   },
@@ -35,6 +38,58 @@ router.hooks({
   },
   after: (match) => {
     const view = match?.data?.view ? camelCase(match.data.view) : "home";
+
+    if (view === "buildYourHome") {
+      // Add an event handler for the submit button on the form
+      document.querySelector("#build").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Get the form element
+        const inputList = event.target.elements;
+        console.log("Input Element List", inputList);
+
+        // Create an empty array to hold the toppings
+        const materials = [];
+
+        // Iterate over the toppings array
+        let sum = 0;
+        for (let input of inputList.build) {
+          // If the value of the checked attribute is true then add the value to the toppings array
+          if (input.selected) {
+            let price = Number(input.id);
+            sum += price;
+            let estimateItem = {
+              itemName: input.value,
+              price: Number(input.id),
+            };
+            materials.push(estimateItem);
+          }
+        }
+        console.log(sum);
+        console.log(materials);
+        // Create a request body object to send to the API
+        const requestData = {
+          estimateItems: materials,
+          combinedPrice: sum,
+        };
+        // Log the request body to the console
+        console.log("request Body", requestData);
+
+        axios
+          // Make a POST request to the API to create a new pizza
+          .post(`${process.env.TAAY_API}/estimates`, requestData)
+          .then((response) => {
+            //  Then push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
+            store.estimate.estimate = response.data;
+            console.log(store.estimate.estimate);
+            router.navigate("/estimate");
+          })
+          // If there is an error log it to the console
+          .catch((error) => {
+            console.log("It puked", error);
+          });
+      });
+    }
 
     if (view === "contact") {
       document
