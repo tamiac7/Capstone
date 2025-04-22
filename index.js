@@ -48,7 +48,7 @@ router.hooks({
         const inputList = event.target.elements;
         console.log("Input Element List", inputList);
 
-        // Create an empty array to hold the toppings
+        // Create an empty array to hold the materials
         const materials = [];
 
         // Iterate over the toppings array

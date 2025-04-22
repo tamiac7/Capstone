@@ -14,9 +14,14 @@ export default (state) => html`
           />
         </div>
         <div class="flip-box-back">
-          <h2>Estimate</h2>
-          <p>Below is your Total estimate!</p>
-          ${state.estimate.combinedPrice}
+          <h2><u class="header">Estimate</u></h2>
+          <h4>Below is your total estimate!</h4>
+          <div class="columns">
+            <ul class="price">
+              <li>${state.estimateItem}</li>
+            </ul>
+            ${state.estimate.combinedPrice}
+          </div>
         </div>
       </div>
     </div>
