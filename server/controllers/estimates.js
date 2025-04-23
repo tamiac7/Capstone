@@ -23,9 +23,10 @@ router.post("/", async (request, response) => {
 });
 
 // Get a single pizza by ID
-router.get("/:id", async (request, response) => {
+router.get("/", async (request, response) => {
   try {
-    const data = await Estimate.findById(request.params.id);
+    console.log("Hello");
+    const data = await Estimate.find();
 
     response.json(data);
   } catch (error) {

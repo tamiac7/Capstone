@@ -22,12 +22,14 @@ router.hooks({
   before: (done, match) => {
     // We need to know what view we are on to know what data to fetch
     const view = match?.data?.view ? camelCase(match.data.view) : "home";
-    // Add a switch case statement to handle multiple routes
-    // switch (view) {
-    //   case "estimate":
-    //   // axios.get(`${process.env.TAAY_API}/estimates/id:`);
 
-    // }
+    switch (view) {
+      case "estimate":
+        axios.get(`${process.env.TAAY_API}/estimate`).then((response) => {
+          console.log("response.data", response.data);
+        });
+        break;
+    }
     done();
   },
 

@@ -151,8 +151,7 @@ img {
   display: flex;
   justify-self: center;
   position: absolute;
-  left: 175px;
-  max-width: 90%;
+  width: 300px;
   max-height: 250px;
   margin: 10px;
 }
