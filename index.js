@@ -22,12 +22,18 @@ router.hooks({
   before: (done, match) => {
     // We need to know what view we are on to know what data to fetch
     const view = match?.data?.view ? camelCase(match.data.view) : "home";
-    // Add a switch case statement to handle multiple routes
-    // switch (view) {
-    //   case "estimate":
-    //   // axios.get(`${process.env.TAAY_API}/estimates/id:`);
 
-    // }
+    switch (view) {
+      case "estimate":
+        axios.get(`${process.env.TAAY_API}/estimates`).then((response) => {
+          store.estimate.estimate = response.data[response.data.length - 1];
+          console.log(
+            "store.estimate.estimate",
+            store.estimate.estimate.estimateItems[0].price
+          );
+        });
+        break;
+    }
     done();
   },
 
@@ -80,8 +86,8 @@ router.hooks({
           .post(`${process.env.TAAY_API}/estimates`, requestData)
           .then((response) => {
             //  Then push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
-            store.estimate.estimate = response.data;
-            console.log(store.estimate.estimate);
+
+            console.log("response body", response.data);
             router.navigate("/estimate");
           })
           // If there is an error log it to the console
@@ -106,9 +112,10 @@ router.hooks({
           // console.log(toEmail);
           try {
             await axios
-              .post(`${process.env.TAAY_URL}/sendMail`, requestData)
+              .post(`${process.env.TAAY_API}/sendMail`, requestData)
               .then((response) => {
-                alert(response.data.message);
+                alert("Your message was sent successfully!");
+                router.navigate("/home");
               });
           } catch (error) {
             console.error(error.message);

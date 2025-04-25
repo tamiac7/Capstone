@@ -17,7 +17,15 @@ router.post("/", async (request, response) => {
       subject: "New message from Capstone",
       text: `${toEmail.email} has sent the following message ${toEmail.message}`,
     };
-    sgMail.send(msg);
+    console.log(msg);
+    sgMail
+      .send(msg)
+      .then((data) => {
+        response.json(data);
+      })
+      .catch((error) => {
+        response.status(500).json(error.message);
+      });
   } catch (error) {
     // Output error to the console incase it fails to send in response
     console.log(error);
