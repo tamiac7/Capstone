@@ -15,6 +15,7 @@ export default () =>
       <div id="Flex-container">
         <div class="card">
           <img
+            class="architectOne"
             src="${architectImageUrl}"
             alt="architectOne"
             style="width:100%"

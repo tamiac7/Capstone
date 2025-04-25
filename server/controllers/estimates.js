@@ -5,9 +5,10 @@ const router = Router();
 
 // Create estimate route
 router.post("/", async (request, response) => {
+  console.log(request.data);
   try {
     const newEstimate = new Estimate(request.body);
-
+    console.log("new Estimate", newEstimate);
     const data = await newEstimate.save();
 
     response.json(data);
@@ -24,8 +25,9 @@ router.post("/", async (request, response) => {
 
 // Get a single pizza by ID
 router.get("/", async (request, response) => {
+  console.log("request body", request.body);
   try {
-    console.log("Hello");
+    console.log("Hello", request.data);
     const data = await Estimate.find();
 
     response.json(data);
