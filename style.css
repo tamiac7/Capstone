@@ -27,9 +27,33 @@ body > h1 {
   text-align: center;
 }
 
-nav > ul > li {
-  padding: 0.5rem;
-  list-style-type: none;
+/* The following code url: https://www.w3schools.com/howto/howto_js_topnav.asp */
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: orangered;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04aa6d;
+  color: white;
 }
 
 main > h1 {
@@ -50,18 +74,15 @@ main > p {
 }
 
 #footer {
-  position: absolute;
-}
-
-#footerLinks {
-  position: relative;
-  bottom: 35px;
-  left: 800px;
+  display: flex;
 }
 
 .linksFooter {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  position: relative;
+  top: 17px;
+  left: 1000px;
 }
 
 button {
@@ -76,6 +97,41 @@ button {
 
 .contact {
   font-family: monospace;
+}
+
+/*The following code for popup ref url https://www.google.com/search?q=welcome+pop+up+message+in+javascript&rlz=1C1JZAP_enUS1146US1148&oq=welcome+&gs_lcrp=EgZjaHJvbWUqBggBECMYJzIHCAAQABiPAjIGCAEQIxgnMg0IAhAAGJECGIAEGIoFMg0IAxAAGJECGIAEGIoFMg0IBBAAGJECGIAEGIoFMhAIBRAAGJECGLEDGIAEGIoFMg0IBhAAGJECGIAEGIoFMgwIBxAAGEMYgAQYigUyDAgIEC4YQxiABBiKBTISCAkQLhhDGIMBGLEDGIAEGIoF0gEJNjYwMWoxajE1qAIIsAIB8QXANdQcnoW7ww&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:dbe79287,vid:AF6vGYIyV8M,st:0 */
+.popup {
+  width: 400px;
+  background: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+
+.popup img {
+  width: 100px;
+  margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+  font-size: 38px;
+  font-weight: 600;
+  margin: 30px 0 10px;
+}
+
+.open-popup {
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 form {
@@ -99,6 +155,7 @@ form > input[type="submit"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 15px;
 }
 
 #Flex-container {
@@ -127,15 +184,15 @@ img {
 }
 
 .Architects {
-  position: relative;
-  left: 25%;
-  max-width: 80%;
-  max-height: 50%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   border: 5px black solid;
 }
 
 .architectOne {
-  max-height: 50%;
+  max-width: 100%;
+  max-height: 550px;
 }
 
 .home {
@@ -275,39 +332,51 @@ img {
   box-sizing: border-box;
 }
 
-/* Create three columns of equal width */
-/* .columns {
-  float: left;
-  width: 33.3%;
-  padding: 8px;
-} */
-
-/* style the list */
-/* .price {
-  list-style-type: none;
-  border: 1px solid #eee;
-  margin: 0;
-  padding: 0;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-} */
-
-/* Add shadows on hover */
-.price:hover {
-  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
-/* Pricing header */
-/* .header {
-  background-color: #111;
-  color: white;
-  font-size: 25px;
-} */
-
-/* List items */
-.price li {
-  /* border-bottom: 1px solid #eee; */
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
   text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: orangered;
+  color: black;
+  transform: rotateY(180deg);
 }
 
 /* Change the width of the three columns to 100%
@@ -328,11 +397,9 @@ img {
   .hidden--mobile {
     display: none;
   }
-
-  #Flex-container {
-    flex-direction: column;
-  }
 }
 
 @media (min-width: 550px) and (max-width: 1024px) {
+  nav {
+  }
 }

@@ -82,11 +82,10 @@ router.hooks({
         console.log("request Body", requestData);
 
         axios
-          // Make a POST request to the API to create a new pizza
+          // Make a POST request to the API to create a new estimate
           .post(`${process.env.TAAY_API}/estimates`, requestData)
           .then((response) => {
-            //  Then push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
-
+            //  Then push the new estimate onto the estimate state estimates attribute, so it can be displayed in the estimate list
             console.log("response body", response.data);
             router.navigate("/estimate");
           })
@@ -120,6 +119,8 @@ router.hooks({
           } catch (error) {
             console.error(error.message);
             alert("Failed to send");
+          } finally {
+            e.target.reset();
           }
         });
     }

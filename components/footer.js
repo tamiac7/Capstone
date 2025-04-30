@@ -1,13 +1,13 @@
 import html from "html-literal";
 
-export default () => html`
+export default (navItems) => html`
   <footer id="footer">
-    <p>Your Dream Home</p>
-    <div id="footerLinks">
-      <div class="linksFooter">
-        <a href="about" data-navigo>About</a>
-        <a href="contact" data-navigo>Contact</a>
-      </div>
+    <div>
+      <p>Your Dream Home</p>
+    </div>
+    <div class="linksFooter">
+      <a href="about" data-navigo>About</a>
+      <a href="contact" data-navigo>Contact</a>
     </div>
   </footer>
 `;
