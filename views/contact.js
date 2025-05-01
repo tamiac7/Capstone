@@ -11,9 +11,10 @@ export default () => html`
         <p>We can be reached via email at thearchitectandyou@gmail.com.</p>
       </div>
       <form id="emailForm">
-        <input type="email" id="to" name="to" placeholder="to" required />
-        <input type="email" id="to" name="to" placeholder="from" required />
+        <input class="inputForm" type="email" id="to" name="to" placeholder="to" required />
+        <input  class="inputForm" type="email" id="to" name="to" placeholder="from" required />
         <textarea
+          class="inputForm"
           type="textarea"
           id="message"
           name="message"
@@ -21,22 +22,6 @@ export default () => html`
           required
         ></textarea>
         <button type="submit" onclick="openPopup()">Send</button>
-      </form>
-      <div class="popup" id="popup">
-        <img src="${check}">
-        <h2>Thank you!</h2>
-        <p>Your email has been sent. Thank you!</p>
-        <button type="button" onclick="closePopup()">OK</button>
-    </div>
-    <script>
-      let popup = document.getElementById("popup");
-
-      function openPopup() {
-        popup.classList.add("open-popup");
-      }
-      function closePopup() {
-        popup.classList.remove("open-popup");
-      }
-    </script>
+</form>
   </main>
 `;

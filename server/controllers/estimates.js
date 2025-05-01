@@ -3,7 +3,7 @@ import Estimate from "../models/Estimate.js";
 
 const router = Router();
 
-// Create estimate route
+// Create a new estimate route
 router.post("/", async (request, response) => {
   console.log(request.data);
   try {
@@ -23,12 +23,12 @@ router.post("/", async (request, response) => {
   }
 });
 
-// Get a single pizza by ID
-router.get("/", async (request, response) => {
+// Get estimate by id
+router.get("/:id", async (request, response) => {
   console.log("request body", request.body);
   try {
     console.log("Hello", request.data);
-    const data = await Estimate.find();
+    const data = await Estimate.findById(request.params.id);
 
     response.json(data);
   } catch (error) {

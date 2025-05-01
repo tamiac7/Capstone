@@ -18,7 +18,7 @@ export default (state) =>
             <h2><u class="header">Estimate</u></h2>
             <h4>Below is your total estimate!</h4>
             <div class="columns">
-              <ul class="price">
+              <ul>
                 ${state.estimate?.estimateItems?.length
                   ? state.estimate.estimateItems.map(
                       (item) =>

@@ -19,20 +19,22 @@ router.hooks({
   // We pass in the `done` function to the before hook handler to allow the function to tell Navigo we are finished with the before hook.
   // The `match` parameter is the data that is passed from Navigo to the before hook handler with details about the route being accessed.
   // https://github.com/krasimir/navigo/blob/master/DOCUMENTATION.md#match
-  before: (done, match) => {
+  before: async (done, match) => {
     // We need to know what view we are on to know what data to fetch
     const view = match?.data?.view ? camelCase(match.data.view) : "home";
 
     switch (view) {
       case "estimate":
-        axios.get(`${process.env.TAAY_API}/estimates`).then((response) => {
-          store.estimate.estimate = response.data[response.data.length - 1];
-          console.log(
-            "store.estimate.estimate",
-            store.estimate.estimate.estimateItems[0].price
-          );
-        });
-        break;
+        if (match?.params?.id) {
+          await axios
+            .get(`${process.env.TAAY_API}/estimates/${match.params.id}`)
+            .then((response) => {
+              store.estimate.estimate = response.data;
+            });
+          break;
+        } else {
+          store.estimate.estimate = {};
+        }
     }
     done();
   },
@@ -87,7 +89,7 @@ router.hooks({
           .then((response) => {
             //  Then push the new estimate onto the estimate state estimates attribute, so it can be displayed in the estimate list
             console.log("response body", response.data);
-            router.navigate("/estimate");
+            router.navigate(`/estimate?id=${response.data._id}`);
           })
           // If there is an error log it to the console
           .catch((error) => {
@@ -141,10 +143,10 @@ router.hooks({
     }
     router.updatePageLinks();
 
-    // add menu toggle to bars icon in nav bar
-    document.querySelector(".fa-bars").addEventListener("click", () => {
-      document.querySelector("nav > ul").classList.toggle("hidden--mobile");
-    });
+    //   add menu toggle to bars icon in nav bar
+    //       document.querySelector(".fa-bars").addEventListener("click", () => {
+    //         document.querySelector("nav > ul").classList.toggle("hidden--mobile");
+    //       });
   },
 });
 
